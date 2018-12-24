@@ -6,7 +6,7 @@ tar xzf /tmp/gotty.tar.gz -C /tmp/ && rm /tmp/gotty.tar.gz
 
 curl -s -L https://bin.equinox.io/a/iVLSfdAz1X4/ngrok-stable-linux-amd64.tar.gz -o /tmp/ngrok.tar.gz
 tar xzf /tmp/ngrok.tar.gz -C /tmp/ && rm /tmp/ngrok.tar.gz
-/tmp/ngrok http 7591 &
+TERM=xterm /tmp/ngrok http 7591 &
 sleep 5
 
 echo
