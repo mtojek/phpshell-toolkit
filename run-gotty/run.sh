@@ -7,7 +7,6 @@ tar xzf /tmp/gotty.tar.gz -C /tmp/ && rm /tmp/gotty.tar.gz
 curl -s -L https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o /tmp/ngrok.zip
 unzip /tmp/ngrok.zip -d /tmp && rm /tmp/ngrok.zip
 /tmp/ngrok authtoken 7GDENoRsBHCTJCzbsfkzN_33paVuz9G4k4hAVkSMYXL
-
 /tmp/ngrok tcp 7591 &
 curl -s -L http://localhost:4040/inspect/tcp
 
