@@ -1,12 +1,17 @@
 #!/bin/bash
 
-curl -s -L https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz -o /tmp/gotty.tar.gz
-tar xzf /tmp/gotty.tar.gz -C /tmp/ && rm /tmp/gotty.tar.gz
-/tmp/gotty -w --port 7591 /bin/bash &
+export TEMP_DIR=`mktemp -d`
+export TERM=xterm
 
-curl -s -L https://bin.equinox.io/a/iVLSfdAz1X4/ngrok-stable-linux-amd64.tar.gz -o /tmp/ngrok.tar.gz
-tar xzf /tmp/ngrok.tar.gz -C /tmp/ && rm /tmp/ngrok.tar.gz
-TERM=xterm /tmp/ngrok http 7591 >/dev/null &
+cd $TEMP_DIR
+
+curl -s -L https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz -o gotty.tar.gz
+tar xzf gotty.tar.gz
+./gotty -w --port 7591 /bin/bash &
+
+curl -s -L https://bin.equinox.io/a/iVLSfdAz1X4/ngrok-stable-linux-amd64.tar.gz -o ngrok.tar.gz
+tar xzf ngrok.tar.gz
+./ngrok http 7591 >/dev/null &
 sleep 5
 
 echo
